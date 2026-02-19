@@ -17,10 +17,11 @@
 
 }
 
-.cursiva{
+.derechos{
     font-style:italic;
 
 }
+
 
 .taza{
     font-style:italic;
@@ -31,12 +32,14 @@
 
 }
 body{
-    background-color: rgb(180, 110, 19) ;
+    background-color: #E8D4C0 ;
 }
 .taza h1 {text-align: center;}
  
 nav{
-    background-color: rgb(180, 110, 19) } 
+    background-color: #E8D4C0  url('textura.png');
+    background-size: cover;
+    background-attachment: fixed} 
 
 
 .menu1{
@@ -722,7 +725,7 @@ padding: 20;
 .cuerpo {
   width: 100%;
   height: 60%;
-  background: #d9c3a3;
+  background: #ea0c0c;
   position: absolute;
   bottom: 0;
   border-radius: 0 0 10px 10px;
@@ -735,7 +738,7 @@ padding: 20;
   height: 0;
   border-left: 160px solid transparent;
   border-right: 160px solid transparent;
-  border-bottom: 120px solid #c7b08a;
+  border-bottom: 120px solid #ec1414;
   position: absolute;
   top: 0;
   transform-origin: top;
@@ -748,7 +751,7 @@ padding: 20;
   width: 90%;
   left: 5%;
   bottom: 20px;
-  background: #fffdf7;
+  background: #d8260b;
   padding: 20px;
   border-radius: 6px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -768,3 +771,234 @@ padding: 20;
   0% { transform: translateY(100px); opacity: 0; }
   100% { transform: translateY(-10px); opacity: 1; }
 }
+
+
+
+.carta-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: "Georgia", serif;
+}
+
+.carta-container {
+  position: relative;
+  width: 320px;
+  height: 220px;
+  perspective: 1000px;
+}
+
+.carta-sobre {
+  position: absolute;
+  inset: 0;
+}
+
+.sobre-base {
+  position: absolute;
+  inset: 0;
+  background: #fce8ee;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(180, 30, 70, 0.20);
+}
+
+.sobre-base::before {
+  content: '♡';
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-size: 0.75rem;
+  color: rgba(200, 60, 90, 0.30);
+}
+
+.sobre-base::after {
+  content: '♡';
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 0.75rem;
+  color: rgba(200, 60, 90, 0.30);
+}
+
+.sobre-tapa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: #f5c8d4;
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 6px 10px rgba(180, 30, 70, 0.12);
+  transition: transform 1s ease-in-out;
+}
+
+
+.sobre-tapa::before {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 25px;
+  background: linear-gradient(135deg, #e8506e, #c0184a);
+  clip-path: path('M14 22 C14 22 2 14 2 7.5 C2 3.8 5 2 8 2 C10 2 12 3.2 14 5 C16 3.2 18 2 20 2 C23 2 26 3.8 26 7.5 C26 14 14 22 14 22Z');
+  box-shadow: 0 2px 8px rgba(180, 30, 70, 0.35);
+  transition: opacity 0.4s;
+}
+
+.carta-hoja {
+  position: absolute;
+  left: 10%;
+  top: 15%;
+  width: 80%;
+  height: 70%;
+  background: #fffaf3;
+  border-radius: 6px;
+  box-shadow: 0 6px 15px rgba(180, 30, 70, 0.15);
+  padding: 16px 18px;
+  box-sizing: border-box;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 1s ease-in-out 0.8s, opacity 0.8s ease-in-out 0.8s;
+}
+
+.carta-hoja::before {
+  content: '— ♡ —';
+  display: block;
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 6px;
+  color: rgba(192, 24, 74, 0.45);
+  margin-bottom: 8px;
+}
+
+.carta-hoja p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-align: center;
+  color: #5b3b2a;
+  font-style: italic;
+}
+
+.carta-abierta .sobre-tapa {
+  transform: rotateX(-140deg);
+}
+
+.carta-abierta .sobre-tapa::before {
+  opacity: 0;
+}
+
+.carta-abierta .carta-hoja {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.carta-overlay.cerrando {
+  animation: desvanecer 0.6s forwards;
+}
+
+@keyframes desvanecer {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.carta-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sobre {
+  position: relative;
+  width: 320px;
+  height: 220px;
+}
+
+.cuerpo {
+  width: 100%;
+  height: 60%;
+  background: #f5c8d4;
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 10px 10px;
+  z-index: 2;
+}
+
+
+.cuerpo::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(192, 24, 74, 0.25);
+  border-radius: 5px;
+}
+
+.tapa {
+  width: 0;
+  height: 0;
+  border-left: 160px solid transparent;
+  border-right: 160px solid transparent;
+  border-bottom: 120px solid #f5c8d4;
+  position: absolute;
+  top: 0;
+  transform-origin: top;
+  animation: abrirTapa 1.5s ease forwards 1s;
+  z-index: 3;
+}
+
+.hoja {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  bottom: 20px;
+  background: #fff8f7;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(180, 30, 70, 0.15);
+  transform: translateY(100px);
+  opacity: 0;
+  animation: subirHoja 1.5s ease forwards 2s;
+  z-index: 1;
+}
+
+
+.hoja::before {
+  content: '— ♡ —';
+  display: block;
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 6px;
+  color: rgba(192, 24, 74, 0.45);
+  margin-bottom: 8px;
+}
+
+.hoja p {
+  font-style: italic;
+  color: #5b3b2a;
+}
+
+@keyframes abrirTapa {
+  0% { transform: rotateX(0deg); }
+  100% { transform: rotateX(-120deg); }
+}
+
+@keyframes subirHoja {
+  0% { transform: translateY(100px); opacity: 0; }
+  100% { transform: translateY(-10px); opacity: 1; }
+}
+.derechos {
+  text-align: center;
+}
+
